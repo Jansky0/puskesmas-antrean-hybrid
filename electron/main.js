@@ -61,10 +61,10 @@ function createWindows() {
     });
   });
 
-  // Handle silent print for Thermal POS Printer
+  // Handle silent print for Thermal POS Printer with fallback
   ipcMain.on('print-silent', async (event, { ticketNumber, roomName }) => {
     let printWin = new BrowserWindow({
-      width: 350,
+      width: 400,
       height: 600,
       show: false,
       webPreferences: { nodeIntegration: false, contextIsolation: true }
@@ -123,7 +123,8 @@ function createWindows() {
           p.name.toLowerCase().includes("58") || 
           p.name.toLowerCase().includes("pos") || 
           p.name.toLowerCase().includes("thermal") ||
-          p.name.toLowerCase().includes("receipt")
+          p.name.toLowerCase().includes("receipt") ||
+          p.name.toLowerCase().includes("printer")
         ) || printers.find(p => p.isDefault) || printers[0];
 
         const printOptions = {
@@ -139,9 +140,14 @@ function createWindows() {
         setTimeout(() => {
           printWin.webContents.print(printOptions, (success, errorType) => {
             if (!success) {
-              console.error("Silent print failed:", errorType);
+              console.error("Silent print failed:", errorType, "- fallback to print dialog");
+              printWin.show();
+              printWin.webContents.print({ silent: false, printBackground: true }, () => {
+                printWin.close();
+              });
+            } else {
+              printWin.close();
             }
-            printWin.close();
           });
         }, 500);
       } catch (err) {
