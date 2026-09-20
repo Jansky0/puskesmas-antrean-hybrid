@@ -48,23 +48,25 @@ export default function CetakTiketPoliPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 p-8 flex flex-col items-center relative">
+    <div className="min-h-screen bg-slate-50 p-6 md:p-10 flex flex-col items-center relative">
       <Link
         href="/"
-        className="absolute top-6 left-6 bg-white hover:bg-slate-200 text-teal-900 font-bold px-5 py-2.5 rounded-xl shadow-md transition flex items-center gap-2 border border-slate-200"
+        className="absolute top-6 left-6 bg-white hover:bg-slate-200 text-teal-900 font-bold px-6 py-3 rounded-2xl shadow-md transition flex items-center gap-2 border border-slate-200 text-base z-10"
       >
         ← Kembali ke Menu
       </Link>
-      <h1 className="text-3xl font-black text-teal-900 mb-8 mt-4">ANJUNGAN CETAK TIKET POLI MANDIRI</h1>
-      <div className="grid grid-cols-3 gap-6 max-w-5xl w-full">
+      <h1 className="text-3xl md:text-4xl font-black text-teal-900 mb-8 mt-6 text-center tracking-wide">
+        ANJUNGAN CETAK TIKET POLI MANDIRI
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full">
         {poliRooms.map((room) => (
           <button
             key={room.code}
             onClick={() => generateTicket(room.code, room.name)}
-            className="bg-white p-6 rounded-3xl shadow-md border hover:border-teal-500 hover:shadow-xl transition text-center"
+            className="bg-white p-8 md:p-10 rounded-3xl shadow-lg border-2 border-teal-100 hover:border-teal-500 hover:shadow-2xl transition duration-200 text-center flex flex-col items-center justify-center min-h-[160px] active:scale-95"
           >
-            <span className="text-4xl font-extrabold text-teal-600 block mb-2">{room.code}</span>
-            <span className="text-xl font-bold text-slate-800">{room.name}</span>
+            <span className="text-5xl md:text-6xl font-black text-teal-600 block mb-3">{room.code}</span>
+            <span className="text-xl md:text-2xl font-black text-slate-800 tracking-wide">{room.name}</span>
           </button>
         ))}
       </div>

@@ -39,18 +39,20 @@ export default function CetakLoketPage() {
     <div className="min-h-screen bg-slate-100 flex flex-col items-center justify-center p-6 relative">
       <Link
         href="/"
-        className="absolute top-6 left-6 bg-white hover:bg-slate-200 text-teal-900 font-bold px-5 py-2.5 rounded-xl shadow-md transition flex items-center gap-2 border border-slate-200"
+        className="absolute top-6 left-6 bg-white hover:bg-slate-200 text-teal-900 font-bold px-6 py-3 rounded-2xl shadow-md transition flex items-center gap-2 border border-slate-200 text-base z-10"
       >
         ← Kembali ke Menu
       </Link>
-      <div className="bg-white p-12 rounded-3xl shadow-xl text-center max-w-lg w-full border border-teal-100">
-        <h1 className="text-3xl font-black text-teal-900 mb-2">ANJUNGAN LOKET PENDAFTARAN</h1>
-        <p className="text-slate-500 mb-8">Tekan tombol di bawah untuk mengambil nomor antrean pendaftaran</p>
+      <div className="bg-white p-10 md:p-14 rounded-3xl shadow-2xl text-center max-w-2xl w-full border-2 border-teal-200 flex flex-col items-center">
+        <h1 className="text-3xl md:text-4xl font-black text-teal-900 mb-3 tracking-wide">ANJUNGAN LOKET PENDAFTARAN</h1>
+        <p className="text-slate-600 text-lg mb-8">Tekan tombol di bawah untuk mengambil nomor antrean pendaftaran</p>
+        
         <button
           onClick={generateTicket}
-          className="w-full bg-teal-600 hover:bg-teal-700 text-white font-black text-2xl py-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-200"
+          className="w-full bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-black text-3xl md:text-4xl py-14 md:py-16 rounded-3xl shadow-xl hover:shadow-2xl transition duration-200 flex flex-col items-center justify-center gap-4 active:scale-98 border-2 border-teal-400"
         >
-          AMBIL NOMOR ANTREAN
+          <span className="text-6xl">🎟️</span>
+          <span>AMBIL NOMOR ANTREAN</span>
         </button>
       </div>
     </div>
