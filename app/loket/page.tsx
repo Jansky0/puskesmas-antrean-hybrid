@@ -43,9 +43,16 @@ export default function CetakLoketPage() {
       >
         ← Kembali ke Menu
       </Link>
-      <div className="bg-white p-10 md:p-14 rounded-3xl shadow-2xl text-center max-w-2xl w-full border-2 border-teal-200 flex flex-col items-center">
-        <h1 className="text-3xl md:text-4xl font-black text-teal-900 mb-3 tracking-wide">ANJUNGAN LOKET PENDAFTARAN</h1>
-        <p className="text-slate-600 text-lg mb-8">Tekan tombol di bawah untuk mengambil nomor antrean pendaftaran</p>
+      <div className="bg-white p-10 md:p-16 rounded-3xl shadow-2xl text-center max-w-3xl w-full border-2 border-teal-200 flex flex-col items-center">
+        <span className="bg-teal-100 text-teal-900 font-extrabold text-sm px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider">
+          Puskesmas Prambontergayang
+        </span>
+        <h1 className="text-4xl md:text-5xl font-black text-teal-950 mb-4 tracking-tight leading-tight">
+          ANJUNGAN LOKET PENDAFTARAN
+        </h1>
+        <p className="text-slate-600 text-xl md:text-2xl font-bold mb-10 max-w-xl">
+          Tekan tombol di bawah untuk mengambil nomor antrean pendaftaran
+        </p>
         
         <button
           onClick={generateTicket}
