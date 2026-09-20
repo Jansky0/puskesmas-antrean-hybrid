@@ -1,0 +1,14 @@
+{
+  "appId": "com.puskesmas.antrean",
+  "productName": "AntreanPuskesmas",
+  "directories": {
+    "output": "dist-electron"
+  },
+  "files": [
+    "electron/**/*",
+    "out/**/*"
+  ],
+  "win": {
+    "target": "nsis"
+  }
+}

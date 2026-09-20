@@ -1,0 +1,15 @@
+# Next.js
+.next/
+out/
+
+# Node modules
+node_modules/
+
+# Electron build artifacts
+dist-electron/
+dist/
+
+# Misc
+.DS_Store
+*.log
+.env*.local
