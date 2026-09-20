@@ -169,26 +169,24 @@ export function printThermalTicket(ticketNumber: string, roomName: string) {
         <meta charset="utf-8">
         <style>
           @page {
-            size: 58mm auto;
             margin: 0;
           }
           * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
           body {
-            font-family: Arial, sans-serif, monospace;
+            font-family: Arial, Helvetica, sans-serif;
             text-align: left;
             width: 100%;
-            max-width: 58mm;
             margin: 0;
-            padding: 6px 2px 20px 4px;
-            color: #000 !important;
-            background: #fff !important;
+            padding: 8px 6px 30px 6px;
+            color: #000000 !important;
+            background: #ffffff !important;
           }
-          .title { font-size: 12px; font-weight: bold; margin-bottom: 2px; text-transform: uppercase; text-align: left; }
-          .subtitle { font-size: 10px; margin-bottom: 4px; text-align: left; }
-          .divider { border-top: 1px dashed #000; margin: 6px 0; width: 100%; }
-          .room { font-size: 12px; font-weight: bold; margin: 6px 0; text-transform: uppercase; text-align: left; }
-          .ticket { font-size: 40px; font-weight: 900; margin: 6px 0; line-height: 1; letter-spacing: 1px; text-align: left; }
-          .footer { font-size: 9px; margin-top: 6px; font-weight: bold; text-align: left; }
+          .title { font-size: 16px; font-weight: 900; margin-bottom: 4px; text-transform: uppercase; line-height: 1.2; text-align: left; }
+          .subtitle { font-size: 12px; font-weight: bold; margin-bottom: 6px; text-align: left; }
+          .divider { border-top: 2px dashed #000; margin: 8px 0; width: 100%; }
+          .room { font-size: 16px; font-weight: 900; margin: 8px 0; text-transform: uppercase; text-align: left; }
+          .ticket { font-size: 56px; font-weight: 900; margin: 8px 0; line-height: 1; letter-spacing: 2px; text-align: left; }
+          .footer { font-size: 12px; margin-top: 8px; font-weight: bold; text-align: left; }
         </style>
       </head>
       <body>
