@@ -81,12 +81,12 @@ function createWindows() {
         <head>
           <meta charset="utf-8">
           <style>
-            @page { margin: 0; }
+            @page { size: 58mm 3276mm; margin: 0; }
             * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
             body {
               font-family: Arial, Helvetica, sans-serif;
               text-align: left;
-              width: 100%;
+              width: 58mm;
               margin: 0;
               padding: 8px 6px 30px 6px;
               color: #000000 !important;
@@ -130,7 +130,8 @@ function createWindows() {
         const printOptions = {
           silent: true,
           printBackground: true,
-          margins: { marginType: 'none' }
+          margins: { marginType: 'none' },
+          pageSize: { width: 58000, height: 3276000 }
         };
 
         if (targetPrinter && targetPrinter.name) {
