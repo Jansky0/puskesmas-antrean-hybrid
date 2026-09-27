@@ -176,34 +176,77 @@ export function printThermalTicket(ticketNumber: string, roomName: string) {
             size: 58mm 3276mm;
             margin: 0;
           }
-          * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
-          body {
-            font-family: Arial, Helvetica, sans-serif;
-            text-align: left;
-            width: 58mm;
+          * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+          }
+          html, body {
             margin: 0;
-            padding: 8px 6px 30px 6px;
-            color: #000000 !important;
+            padding: 0;
             background: #ffffff !important;
           }
-          .title { font-size: 16px; font-weight: 900; margin-bottom: 4px; text-transform: uppercase; line-height: 1.2; text-align: left; }
-          .subtitle { font-size: 12px; font-weight: bold; margin-bottom: 6px; text-align: left; }
-          .divider { border-top: 2px dashed #000; margin: 8px 0; width: 100%; }
-          .room { font-size: 16px; font-weight: 900; margin: 8px 0; text-transform: uppercase; text-align: left; }
-          .ticket { font-size: 56px; font-weight: 900; margin: 8px 0; line-height: 1; letter-spacing: 2px; text-align: left; }
-          .footer { font-size: 12px; margin-top: 8px; font-weight: bold; text-align: left; }
+          body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            color: #000000 !important;
+          }
+          .ticket-container {
+            width: 44mm;
+            margin-left: 6mm;
+            padding: 8px 1mm 24px 1mm;
+            text-align: center;
+          }
+          .title {
+            font-size: 13px;
+            font-weight: 900;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+            line-height: 1.25;
+            letter-spacing: 0.5px;
+          }
+          .subtitle {
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 4px;
+          }
+          .divider {
+            border-top: 2px dashed #000;
+            margin: 6px 0;
+            width: 100%;
+          }
+          .room {
+            font-size: 14px;
+            font-weight: 900;
+            margin: 6px 0;
+            text-transform: uppercase;
+            line-height: 1.25;
+          }
+          .ticket {
+            font-size: 52px;
+            font-weight: 900;
+            margin: 6px 0;
+            line-height: 1;
+            letter-spacing: 2px;
+          }
+          .footer {
+            font-size: 11px;
+            margin-top: 6px;
+            font-weight: bold;
+          }
         </style>
       </head>
       <body>
-        <div class="title">PUSKESMAS PRAMBONTERGAYANG</div>
-        <div class="subtitle">Sistem Antrean Pelayanan</div>
-        <div class="divider"></div>
-        <div class="room">${roomName}</div>
-        <div class="ticket">${ticketNumber}</div>
-        <div class="divider"></div>
-        <div class="subtitle">${nowStr}</div>
-        <div class="footer">Harap Menunggu Nomor Dipanggil</div>
-        <div style="height: 15px;"></div>
+        <div class="ticket-container">
+          <div class="title">PUSKESMAS PRAMBONTERGAYANG</div>
+          <div class="subtitle">Sistem Antrean Pelayanan</div>
+          <div class="divider"></div>
+          <div class="room">${roomName}</div>
+          <div class="ticket">${ticketNumber}</div>
+          <div class="divider"></div>
+          <div class="subtitle">${nowStr}</div>
+          <div class="footer">Harap Menunggu Dipanggil</div>
+          <div style="height: 25px;"></div>
+        </div>
         <script>
           window.onload = function() {
             window.focus();

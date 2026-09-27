@@ -116,52 +116,70 @@ export default function DisplayTVPage() {
       {/* Main Content Area: Fill vertical space */}
       <div className="grid grid-cols-12 gap-5 flex-1 my-3 items-stretch">
         {/* Box Khusus Loket Pendaftaran (Kiri) */}
-        <div className="col-span-5 bg-teal-700/40 rounded-3xl border-2 border-teal-400 p-6 flex flex-col justify-between text-center shadow-2xl h-full">
-          <div className="bg-teal-600 font-extrabold py-3 text-2xl rounded-xl tracking-wider uppercase shrink-0">
+        <div className="col-span-4 bg-teal-700/40 rounded-3xl border-2 border-teal-400 p-6 flex flex-col justify-between text-center shadow-2xl h-full">
+          <div className="bg-teal-600 font-extrabold py-3 text-2xl lg:text-3xl rounded-xl tracking-wider uppercase shrink-0">
             {loketCall.roomName}
           </div>
-          <div className="text-9xl font-black my-auto tracking-tighter text-yellow-300">
+          <div className="text-8xl lg:text-9xl font-black my-auto tracking-tighter text-yellow-300">
             {loketCall.ticketNumber}
           </div>
-          <div className="bg-slate-900/80 py-3 rounded-xl text-teal-200 font-semibold animate-pulse shrink-0">
+          <div className="bg-slate-900/80 py-3 rounded-xl text-teal-200 font-bold text-base lg:text-lg animate-pulse shrink-0">
             SILAKAN MENUJU LOKET PENDAFTARAN
           </div>
         </div>
 
-        {/* Grid Status Ruang Poli (8 Ruangan): 4 columns x 2 rows */}
-        <div className="col-span-7 grid grid-cols-4 grid-rows-2 gap-3 h-full">
+        {/* Grid Status Ruang Poli (8 Ruangan): 4 columns x 2 rows, diperbesar */}
+        <div className="col-span-8 grid grid-cols-4 grid-rows-2 gap-3.5 h-full">
           {rooms.map((room) => {
             const isBeingCalled = activePoliCall === room.code;
             return (
               <div
                 key={room.code}
-                className={`rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between h-full border ${
+                className={`rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between h-full border-2 ${
                   isBeingCalled
-                    ? "bg-yellow-100 border-4 border-yellow-400 shadow-2xl scale-105 z-10 animate-bounce"
+                    ? "bg-yellow-100 border-yellow-400 shadow-2xl scale-105 z-10 animate-bounce"
                     : "bg-white text-slate-900 shadow border-slate-200"
                 }`}
               >
+                {/* Header Keterangan Ruangan (Diperbesar & Sangat Jelas) */}
                 <div
-                  className={`py-2 px-2 shrink-0 flex items-center justify-between gap-1 ${
-                    isBeingCalled ? "bg-yellow-500 text-slate-950 font-black" : "bg-teal-700 text-white"
+                  className={`py-2 px-3 shrink-0 flex flex-col items-center justify-center text-center transition-colors ${
+                    isBeingCalled ? "bg-yellow-400 text-slate-950 font-black" : "bg-teal-800 text-white"
                   }`}
                 >
-                  <span className="bg-black/20 text-white text-[11px] font-black px-1.5 py-0.5 rounded shrink-0">
-                    R.{room.roomNo}
-                  </span>
-                  <span className="text-xs font-bold leading-tight truncate text-center flex-1">
-                    {room.name.replace("Ruang ", "")}
-                  </span>
-                  <span className="bg-white/20 text-white text-[11px] font-black px-1.5 py-0.5 rounded shrink-0">
-                    {room.code}
-                  </span>
+                  <div className="flex items-center justify-between w-full mb-1">
+                    <span className={`text-xs font-black px-2 py-0.5 rounded-full uppercase tracking-wider ${
+                      isBeingCalled ? "bg-black/20 text-slate-950" : "bg-black/30 text-teal-200"
+                    }`}>
+                      RUANG {room.roomNo}
+                    </span>
+                    <span className={`text-xs font-black px-2 py-0.5 rounded-full ${
+                      isBeingCalled ? "bg-black/20 text-slate-950" : "bg-emerald-400 text-slate-950"
+                    }`}>
+                      POLI {room.code}
+                    </span>
+                  </div>
+                  <div className={`text-sm sm:text-base lg:text-lg font-black leading-tight uppercase tracking-tight text-center line-clamp-2 ${
+                    isBeingCalled ? "text-slate-950" : "text-white"
+                  }`}>
+                    {room.name}
+                  </div>
                 </div>
-                <div
-                  className={`text-center font-black text-5xl lg:text-6xl my-auto flex items-center justify-center h-full ${
-                    isBeingCalled ? "text-teal-900 text-6xl lg:text-7xl scale-110" : "text-slate-800"
-                  }`}
-                >
-                  {room.currentTicket}
+
+                {/* Nomor Antrean Besar di Tengah */}
+                <div className="my-auto flex flex-col items-center justify-center py-2 h-full">
+                  <span
+                    className={`text-center font-black text-5xl lg:text-6xl tracking-tight ${
+                      isBeingCalled ? "text-teal-950 text-6xl lg:text-7xl scale-110" : "text-slate-800"
+                    }`}
+                  >
+                    {room.currentTicket}
+                  </span>
+                  {isBeingCalled && (
+                    <span className="mt-1 text-[11px] font-black uppercase tracking-wider bg-yellow-400 text-slate-950 px-2.5 py-0.5 rounded-full animate-pulse shadow-sm">
+                      Sedang Dipanggil
+                    </span>
+                  )}
                 </div>
               </div>
             );
