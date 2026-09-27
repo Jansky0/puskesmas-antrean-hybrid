@@ -27,10 +27,12 @@ export default function DisplayTVPage() {
 
     // Initial fetch for current active CALLING queues
     const fetchCurrentState = async () => {
+      const today = new Date().toISOString().split("T")[0];
       const { data } = await supabase
         .from("queues")
         .select("*")
-        .eq("status", "CALLING")
+        .gte("created_at", today)
+        .not("called_at", "is", null)
         .order("called_at", { ascending: false });
 
       if (data && data.length > 0) {
@@ -71,7 +73,10 @@ export default function DisplayTVPage() {
                 ticketNumber: newQueue.ticket_number,
               });
             } else {
-              setActivePoliCall(newQueue.room_code);
+              setActivePoliCall("");
+              setTimeout(() => {
+                setActivePoliCall(newQueue.room_code);
+              }, 50);
               setRooms((prev) =>
                 prev.map((r) =>
                   r.code === newQueue.room_code ? { ...r, currentTicket: newQueue.ticket_number } : r
@@ -81,6 +86,8 @@ export default function DisplayTVPage() {
 
             // Jalankan suara pemanggilan otomatis
             voiceManager.speak(newQueue.ticket_number, newQueue.room_name);
+          } else if (newQueue && (newQueue.status === "DONE" || newQueue.status === "SKIPPED")) {
+            setActivePoliCall((prev) => (prev === newQueue.room_code ? "" : prev));
           }
         }
       )
