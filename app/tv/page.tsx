@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 import { voiceManager } from "@/lib/audioManager";
+import { POLI_ROOMS } from "@/lib/rooms";
 
 export default function DisplayTVPage() {
   const [loketCall, setLoketCall] = useState({
@@ -13,17 +14,9 @@ export default function DisplayTVPage() {
 
   const [activePoliCall, setActivePoliCall] = useState("");
 
-  const [rooms, setRooms] = useState([
-    { code: "A", name: "Ruang Anak", currentTicket: "---" },
-    { code: "B", name: "Ruang Ibu", currentTicket: "---" },
-    { code: "C", name: "Ruang Klaster 3", currentTicket: "---" },
-    { code: "D", name: "Ruang Tindakan", currentTicket: "---" },
-    { code: "E", name: "Ruang KB", currentTicket: "---" },
-    { code: "F", name: "Ruang Imunisasi", currentTicket: "---" },
-    { code: "G", name: "Ruang Gigi & Mulut", currentTicket: "---" },
-    { code: "H", name: "Ruang USG", currentTicket: "---" },
-    { code: "I", name: "Ruang Farmasi", currentTicket: "---" },
-  ]);
+  const [rooms, setRooms] = useState(
+    POLI_ROOMS.map((r) => ({ ...r, currentTicket: "---" }))
+  );
 
   const [time, setTime] = useState("");
 
@@ -135,29 +128,37 @@ export default function DisplayTVPage() {
           </div>
         </div>
 
-        {/* Grid Status Ruang Poli (A-I): Flex 1 to fill height */}
-        <div className="col-span-7 grid grid-cols-3 gap-4 h-full">
+        {/* Grid Status Ruang Poli (8 Ruangan): 4 columns x 2 rows */}
+        <div className="col-span-7 grid grid-cols-4 grid-rows-2 gap-3 h-full">
           {rooms.map((room) => {
             const isBeingCalled = activePoliCall === room.code;
             return (
               <div
                 key={room.code}
-                className={`rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between h-full ${
+                className={`rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between h-full border ${
                   isBeingCalled
                     ? "bg-yellow-100 border-4 border-yellow-400 shadow-2xl scale-105 z-10 animate-bounce"
-                    : "bg-white text-slate-900 shadow"
+                    : "bg-white text-slate-900 shadow border-slate-200"
                 }`}
               >
                 <div
-                  className={`text-center font-bold text-sm py-2.5 uppercase tracking-wide shrink-0 ${
-                    isBeingCalled ? "bg-yellow-500 text-slate-950 font-black" : "bg-teal-600 text-white"
+                  className={`py-2 px-2 shrink-0 flex items-center justify-between gap-1 ${
+                    isBeingCalled ? "bg-yellow-500 text-slate-950 font-black" : "bg-teal-700 text-white"
                   }`}
                 >
-                  {room.name}
+                  <span className="bg-black/20 text-white text-[11px] font-black px-1.5 py-0.5 rounded shrink-0">
+                    R.{room.roomNo}
+                  </span>
+                  <span className="text-xs font-bold leading-tight truncate text-center flex-1">
+                    {room.name.replace("Ruang ", "")}
+                  </span>
+                  <span className="bg-white/20 text-white text-[11px] font-black px-1.5 py-0.5 rounded shrink-0">
+                    {room.code}
+                  </span>
                 </div>
                 <div
-                  className={`text-center font-black text-6xl lg:text-7xl my-auto flex items-center justify-center h-full ${
-                    isBeingCalled ? "text-teal-900 text-7xl lg:text-8xl scale-110" : "text-slate-800"
+                  className={`text-center font-black text-5xl lg:text-6xl my-auto flex items-center justify-center h-full ${
+                    isBeingCalled ? "text-teal-900 text-6xl lg:text-7xl scale-110" : "text-slate-800"
                   }`}
                 >
                   {room.currentTicket}

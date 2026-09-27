@@ -1,18 +1,11 @@
 import PetugasClient from "./PetugasClient";
 
+import { ALL_ROOMS } from "@/lib/rooms";
+
 export function generateStaticParams() {
-  return [
-    { ruangId: "LKT" },
-    { ruangId: "A" },
-    { ruangId: "B" },
-    { ruangId: "C" },
-    { ruangId: "D" },
-    { ruangId: "E" },
-    { ruangId: "F" },
-    { ruangId: "G" },
-    { ruangId: "H" },
-    { ruangId: "I" },
-  ];
+  const params = ALL_ROOMS.map((r) => ({ ruangId: r.code }));
+  params.push({ ruangId: "I" });
+  return params;
 }
 
 export default async function Page({ params }: { params: Promise<{ ruangId: string }> }) {

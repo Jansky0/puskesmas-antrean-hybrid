@@ -91,20 +91,24 @@ class VoiceAnnouncementManager {
     const roomLower = roomName.toLowerCase();
     if (roomLower.includes("loket")) {
       sequence.push("/audio/loket-pendaftaran.mp3");
-    } else if (roomLower.includes("anak")) {
-      sequence.push("/audio/ruang-anak.mp3");
+    } else if (roomLower.includes("dewasa")) {
+      sequence.push("/audio/ruang-pelayanan-dewasa.mp3");
+    } else if (roomLower.includes("lansia")) {
+      sequence.push("/audio/ruang-pelayanan-lansia.mp3");
     } else if (roomLower.includes("ibu")) {
-      sequence.push("/audio/ruang-ibu.mp3");
-    } else if (roomLower.includes("klaster")) {
-      sequence.push("/audio/ruang-klaster-3.mp3");
+      sequence.push("/audio/ruang-pelayanan-ibu.mp3");
+    } else if (roomLower.includes("anak")) {
+      sequence.push("/audio/ruang-pelayanan-anak.mp3");
     } else if (roomLower.includes("tindakan")) {
       sequence.push("/audio/ruang-tindakan.mp3");
     } else if (roomLower.includes("kb")) {
-      sequence.push("/audio/ruang-kb.mp3");
+      sequence.push("/audio/ruang-pelayanan-kb.mp3");
     } else if (roomLower.includes("imunisasi")) {
-      sequence.push("/audio/ruang-imunisasi.mp3");
+      sequence.push("/audio/ruang-pelayanan-imunisasi.mp3");
     } else if (roomLower.includes("gigi")) {
-      sequence.push("/audio/ruang-gigi.mp3");
+      sequence.push("/audio/ruang-pelayanan-gigi.mp3");
+    } else if (roomLower.includes("klaster")) {
+      sequence.push("/audio/ruang-klaster-3.mp3");
     } else if (roomLower.includes("usg")) {
       sequence.push("/audio/ruang-usg.mp3");
     } else if (roomLower.includes("farmasi")) {

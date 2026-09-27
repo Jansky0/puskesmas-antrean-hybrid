@@ -40,13 +40,21 @@ AUDIO_MAP = {
     "belas.mp3": "belas",
     # Rooms
     "loket-pendaftaran.mp3": "Loket Pendaftaran",
+    "ruang-pelayanan-dewasa.mp3": "Ruang Pelayanan Dewasa",
+    "ruang-pelayanan-lansia.mp3": "Ruang Pelayanan Lansia",
+    "ruang-pelayanan-ibu.mp3": "Ruang Pelayanan Ibu",
+    "ruang-pelayanan-anak.mp3": "Ruang Pelayanan Anak",
+    "ruang-tindakan.mp3": "Ruang Tindakan",
+    "ruang-pelayanan-kb.mp3": "Ruang Pelayanan K B",
+    "ruang-pelayanan-imunisasi.mp3": "Ruang Pelayanan Imunisasi",
+    "ruang-pelayanan-gigi.mp3": "Ruang Pelayanan Gigi",
+    # Legacy fallbacks
     "ruang-anak.mp3": "Ruang Anak",
     "ruang-ibu.mp3": "Ruang Ibu",
     "ruang-klaster-3.mp3": "Ruang Klaster Tiga",
-    "ruang-tindakan.mp3": "Ruang Tindakan",
     "ruang-kb.mp3": "Ruang K B",
     "ruang-imunisasi.mp3": "Ruang Imunisasi",
-    "ruang-gigi.mp3": "Ruang Gigi dan Mulut",
+    "ruang-gigi.mp3": "Ruang Gigi",
     "ruang-usg.mp3": "Ruang U S G",
     "ruang-farmasi.mp3": "Ruang Farmasi"
 }
